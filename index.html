@@ -9,18 +9,27 @@
             <div class="row">
                 <div class= "col-10">
                     <h2><a href="https://khlam.github.io/" style="text-decoration:none">khlam.github.io</a>/time</h2>
-                    <h4 name="title-banner">Displays the current time. Double click to set a count-down.</h4>
+                    <h4 name="title-banner">Displays current system time. Double click to set a count-down (hours : minutes : seconds), enter to start</h4>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12" >
-                    <svg id="timer" viewBox="0 0 56 18">
-                        <text x="0" y="15" style="text-align: center;">19:89</text>
+                    <svg viewBox="0 0 63 18" id='timeDisplay'>
+                        <text x="0" y="15" style="text-align: center;" id="timer">19:89 cn</text>
                     </svg>
                 </div>
             </div>
 
+            <script>
+                let timer = showCurrentTime()
+
+                document.getElementById("timeDisplay").ondblclick = function(){
+                    clearInterval(timer)
+                    setCountDown()
+                }
+
+            </script>
 
         </body>
 </html>
