@@ -31,13 +31,22 @@ function doCountDown(time) {
 
 function cleanInput(countDownTime) {
     countDownTime = countDownTime.split(":")
-    if (countDownTime.length === 3) {
-        countDownTime = countDownTime.map(function (x) {
-            if (isNaN(x) || x === ""){
-                x = 0
-            }
-            return parseInt(x, 10) 
-        })
+
+    countDownTime = countDownTime.map(function (x) { // convert input to int, reload page if not int
+        if (isNaN(x) || x === ""){
+            location.reload() // bad input
+        }
+        return parseInt(x, 10) 
+    })
+
+    console.log(countDownTime.length)
+    console.log(countDownTime)
+
+    if (countDownTime.length === 1) {
+        return [0,0,countDownTime[0]]
+    }else if(countDownTime.length === 2) {
+        return [0,countDownTime[0],countDownTime[1]]
+    }else if (countDownTime.length === 3) {
         return countDownTime
     }else {
         console.log('bad input')
